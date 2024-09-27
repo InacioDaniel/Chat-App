@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login com Google</title>
+    <!-- Incluindo o Bootstrap via CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Incluindo a biblioteca de API do Google -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="SEU_CLIENT_ID_AQUI.apps.googleusercontent.com"> <!-- Substitua pelo seu CLIENT_ID -->
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Login com Google</h2>
+        <div class="g_id_signin" 
+             data-type="standard" 
+             data-shape="rectangular" 
+             data-theme="outline" 
+             data-size="large" 
+             data-text="sign_in_with" 
+             data-logo="true" 
+             data-width="300" 
+             data-height="50" 
+             data-on_success="onSignIn">
+        </div>
+    </div>
+
+    <script>
+        // Função chamada quando o login é bem-sucedido
+        function onSignIn(googleUser) {
+            // Obtendo informações do usuário
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Não enviar para o seu servidor
+            console.log('Nome: ' + profile.getName());
+            console.log('Email: ' + profile.getEmail());
+
+            // Redirecionando para a página welcome.html
+            window.location.href = "welcome.html";
+        }
+
+        // Além disso, pode adicionar a função para desconectar
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('Usuário desconectado.');
+            });
+        }
+    </script>
+    <!-- Incluindo o jQuery e Bootstrap JS via CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

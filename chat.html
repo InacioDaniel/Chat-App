@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat - Anonymous</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 90vh;
+    }
+
+    .messages {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 10px;
+      background-color: #1f1f1f;
+    }
+
+    .message {
+      margin-bottom: 10px;
+    }
+
+    .message img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+    
+    .message-input {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: #24252a;
+    }
+
+    .message-input input {
+      flex-grow: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .message-input button {
+      padding: 10px;
+      border: none;
+      background-color: #0187a7;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .message-input input[type="file"] {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Chat</h1>
+  </header>
+
+  <div class="chat-container">
+    <div class="messages" id="messages"></div>
+    <div class="message-input">
+      <input type="file" id="fileInput" />
+      <input type="text" id="messageInput" placeholder="Digite sua mensagem...">
+      <button id="sendMessage">Enviar</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>
